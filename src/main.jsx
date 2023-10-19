@@ -11,6 +11,7 @@ import MainLayout from './Components/MainLayout';
 import AddProduct from './Components/CURD/AddProduct/AddProduct';
 import Login from './Components/Create&Login/Login';
 import CreateUser from './Components/Create&Login/CreateUser';
+import ProductDetails from './Components/Home/ProductDetails/ProductDetails';
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
       {
         path:"/createUser",
         element: <CreateUser></CreateUser>
+      },
+      {
+        path:"/productDetails/:id",
+        element: <ProductDetails></ProductDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params?.id}`)
       }
     ]
   },
