@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
 import Product from "./Product/Product";
+import { useLoaderData } from "react-router-dom";
 
 
 const Products = () => {
 
-    const [products, setProducts] = useState(null)
-    useEffect(() => {
-        fetch("http://localhost:5000/products")
-            .then((res) => res.json())
-            .then((data) => setProducts(data))
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
+    const products = useLoaderData()
     console.log(products)
 
     return (
@@ -20,7 +12,7 @@ const Products = () => {
             <h1 className="text-2xl font-medium my-3">Just For You</h1>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-5">
                 {
-                    products?.map(product => <Product key={product._id} product={product}></Product>)
+                    products?.slice(0,6)?.map(product => <Product key={product._id} product={product}></Product>)
                 }
             </div>
         </div>

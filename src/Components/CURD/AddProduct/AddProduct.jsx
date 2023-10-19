@@ -39,8 +39,8 @@ const AddProduct = () => {
     }
 
     return (
-        <div className="md:p-24 bg-[url('https://i.ibb.co/18M4yx4/sd-banner.png')] mx-auto bg-center bg-cover bg-blend-overlay bg-[#000] bg-opacity-20 py-8">
-            <h2 className="text-3xl font-extrabold text-black mb-5 text-center">Add Product</h2>
+        <div className="md:p-24 bg-[url('https://i.ibb.co/18M4yx4/sd-banner.png')] mx-auto bg-center bg-cover bg-blend-overlay bg-[#000] bg-opacity-10 py-8">
+            <h2 className="text-3xl font-extrabold text-white mb-5 text-center">Add Product</h2>
             <form onSubmit={addProduct} className='w-11/12 md:w-full mx-auto'>
                 <div className="md:flex md:md:mb-8">
                     <div className="form-control md:w-1/2">

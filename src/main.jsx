@@ -8,7 +8,6 @@ import {
 import Home from './Components/Home/Home';
 import AuthProvider from './Providers/AuthProvider';
 import MainLayout from './Components/MainLayout';
-import BannerUpdate from './Components/CURD/Banner/BannerUpdate';
 import AddProduct from './Components/CURD/AddProduct/AddProduct';
 
 
@@ -19,15 +18,12 @@ const router = createBrowserRouter([
     children:[
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/products")
       },
       {
         path:"/add-product",
         element: <AddProduct></AddProduct>
-      },
-      {
-        path:"/bannerUpdate",
-        element: <BannerUpdate></BannerUpdate>
       }
     ]
   },
