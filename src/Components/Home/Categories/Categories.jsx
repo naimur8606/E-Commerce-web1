@@ -7,7 +7,7 @@ const Categories = () => {
     const [categories, setCategories] = useState(null)
 
     useEffect(() => {
-        fetch("http://localhost:5000/categories") // Assuming "main.json" is in the public folder
+        fetch("http://localhost:5000/categories")
             .then((res) => res.json())
             .then((data) => setCategories(data))
             .catch((error) => {
