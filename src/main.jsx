@@ -8,9 +8,8 @@ import {
 import Home from './Components/Home/Home';
 import AuthProvider from './Providers/AuthProvider';
 import MainLayout from './Components/MainLayout';
-import NavUpdate from './Components/Nav/NavUpdate';
 import BannerUpdate from './Components/CURD/Banner/BannerUpdate';
-import Categories from './Components/Home/Categories/Categories';
+import AddProduct from './Components/CURD/AddProduct/AddProduct';
 
 
 const router = createBrowserRouter([
@@ -23,12 +22,8 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path:"/categories",
-        element: <Categories></Categories>
-      },
-      {
-        path:"/navUpdate",
-        element: <NavUpdate></NavUpdate>
+        path:"/add-product",
+        element: <AddProduct></AddProduct>
       },
       {
         path:"/bannerUpdate",
