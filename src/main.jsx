@@ -9,6 +9,8 @@ import Home from './Components/Home/Home';
 import AuthProvider from './Providers/AuthProvider';
 import MainLayout from './Components/MainLayout';
 import AddProduct from './Components/CURD/AddProduct/AddProduct';
+import Login from './Components/Create&Login/Login';
+import CreateUser from './Components/Create&Login/CreateUser';
 
 
 const router = createBrowserRouter([
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path:"/add-product",
         element: <AddProduct></AddProduct>
+      },
+      {
+        path:"/login",
+        element: <Login></Login>
+      },
+      {
+        path:"/createUser",
+        element: <CreateUser></CreateUser>
       }
     ]
   },
