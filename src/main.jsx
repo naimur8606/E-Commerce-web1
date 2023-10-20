@@ -14,12 +14,15 @@ import CreateUser from './Components/Create&Login/CreateUser';
 import ProductDetails from './Components/Home/ProductDetails/ProductDetails';
 import PrivateRoute from './Route/PrivateRoute';
 import Cart from './Components/Cart/Cart';
+import ErrorPage from './Components/Error/ErrorPage';
+import CategoryHomePage from './Components/CategoryHomePage/CategoryHomePage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children:[
       {
         path: "/",
@@ -41,6 +44,11 @@ const router = createBrowserRouter([
       {
         path:"/cart",
         element: <PrivateRoute><Cart></Cart></PrivateRoute>
+      },
+      {
+        path:"/:categories",
+        element: <CategoryHomePage></CategoryHomePage>,
+        loader: () => fetch("http://localhost:5000/products")
       },
       {
         path:"/productDetails/:id",

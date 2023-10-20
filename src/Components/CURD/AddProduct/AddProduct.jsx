@@ -7,14 +7,13 @@ const AddProduct = () => {
         const form = e.target;
         const name = form.name.value;
         const brand_name = form.Brand_name.value;
-        const category = form.category.value;
+        const category = form.categories.value;
         const price = form.price.value;
         const rating = form.rating.value;
-        const btn = form.btn.value;
         const photo = form.photo.value;
         const description = form.description.value;
 
-        const product = { name, brand_name, category, price, rating, btn, photo, description }
+        const product = { name, brand_name, category, price, rating, photo, description }
         console.log(product);
         
         fetch(`http://localhost:5000/products`, {
@@ -45,25 +44,25 @@ const AddProduct = () => {
                 <div className="md:flex md:md:mb-8">
                     <div className="form-control md:w-1/2">
                         <span className="label-text text-black text-lg">Product Name</span>
-                        <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full bg-white" />
+                        <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full bg-white" required />
                     </div>
                     <div className="form-control md:w-1/2 md:ml-4">
                         <span className="label-text text-black text-lg">Brand Name</span>
-                        <input type="text" name="Brand_name" placeholder="Banner Title" className="input input-bordered w-full bg-white" />
+                        <input type="text" name="Brand_name" placeholder="Banner Title" className="input input-bordered w-full bg-white" required />
                     </div>
                 </div>
 
                 <div className="md:flex md:mb-8">
                     <div className="form-control md:w-1/2">
                         <span className="label-text text-black text-lg">Photo URL</span>
-                        <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full bg-white" />
+                        <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full bg-white" required />
                     </div>
                     <div className="form-control md:w-1/2 md:ml-4">
                         <span className="label-text text-black text-lg">Category</span>
-                        <select name="category" id="" className="input input-bordered w-full">
+                        <select name="categories" required id="" className="input input-bordered w-full">
                             <option value="Fashion & Apparel">Fashion & Apparel</option>
                             <option value="Electronics & Gadgets">Electronics & Gadgets</option>
-                            <option value="Home Makeover">Home Makeover</option>
+                            <option value="Home Makeover">Home & Makeover</option>
                             <option value="Sports & Outdoors">Sports & Outdoors</option>
                             <option value="Books & Stationery">Books & Stationery</option>
                             <option value="Groceries & Food">Groceries & Food</option>
@@ -73,17 +72,13 @@ const AddProduct = () => {
                 </div>
 
                 <div className="md:flex md:mb-8">
-                    <div className="form-control md:w-1/3">
+                    <div className="form-control md:w-1/2">
                         <span className="label-text text-black text-lg">Price</span>
-                        <input type="text" name="price" placeholder="Price" className="input input-bordered w-full bg-white" />
+                        <input type="text" name="price" placeholder="Price" className="input input-bordered w-full bg-white" required />
                     </div>
-                    <div className="form-control md:w-1/3 md:ml-4">
+                    <div className="form-control md:w-1/2 md:ml-4">
                         <span className="label-text text-black text-lg">Rating</span>
-                        <input type="text" name="rating" placeholder="Ratting Value" className="input input-bordered w-full bg-white" />
-                    </div>
-                    <div className="form-control md:w-1/3 md:ml-4">
-                        <span className="label-text text-black text-lg">Button Name</span>
-                        <input type="text" name="btn" placeholder="Button Name" className="input input-bordered w-full bg-white" />
+                        <input type="text" name="rating" placeholder="Ratting Value" className="input input-bordered w-full bg-white" required />
                     </div>
                 </div>
 

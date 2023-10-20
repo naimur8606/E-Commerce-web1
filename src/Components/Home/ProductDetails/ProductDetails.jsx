@@ -16,8 +16,8 @@ const ProductDetails = () => {
                 </div>
                 <p><span className="font-semibold">Description:</span> {description}</p>
                 <div className="flex justify-between gap-2 my-5">
-                    <button className="btn w-[48%] font-semibold bg-green-500 text-white hover:text-green-500">Buy Now</button>
-                    <button className="btn w-[48%] font-semibold bg-blue-500 text-white hover:text-blue-500">Add to cart</button>
+                    <button className="btn w-[48%] font-semibold bg-green-500 text-white hover:text-green-500">Add to cart</button>
+                    <button className="btn w-[48%] font-semibold bg-blue-500 text-white hover:text-blue-500">Update</button>
                 </div>
             </div>
         </div>
