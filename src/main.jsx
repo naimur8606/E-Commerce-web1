@@ -16,6 +16,7 @@ import PrivateRoute from './Route/PrivateRoute';
 import Cart from './Components/Cart/Cart';
 import ErrorPage from './Components/Error/ErrorPage';
 import CategoryHomePage from './Components/CategoryHomePage/CategoryHomePage';
+import UpdateProduct from './Components/CURD/UpdateProduct/UpdateProduct';
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
       {
         path:"/add-product",
         element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+      },
+      {
+        path:"/update-product/:id",
+        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params?.id}`)
       },
       {
         path:"/login",

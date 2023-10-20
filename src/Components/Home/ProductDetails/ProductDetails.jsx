@@ -1,8 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
     const product = useLoaderData()
-    const { brand_name, description, name, photo, price, rating } = product;
+    const { _id, brand_name, description, name, photo, price, rating } = product;
     console.log(product)
     return (
         <div className="w-11/12 mx-auto py-5 flex justify-between items-center">
@@ -17,7 +17,7 @@ const ProductDetails = () => {
                 <p><span className="font-semibold">Description:</span> {description}</p>
                 <div className="flex justify-between gap-2 my-5">
                     <button className="btn w-[48%] font-semibold bg-green-500 text-white hover:text-green-500">Add to cart</button>
-                    <button className="btn w-[48%] font-semibold bg-blue-500 text-white hover:text-blue-500">Update</button>
+                    <Link to={`/update-product/${_id}`} className="btn w-[48%] font-semibold bg-blue-500 text-white hover:text-blue-500">Update</Link>
                 </div>
             </div>
         </div>
