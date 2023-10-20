@@ -12,6 +12,8 @@ import AddProduct from './Components/CURD/AddProduct/AddProduct';
 import Login from './Components/Create&Login/Login';
 import CreateUser from './Components/Create&Login/CreateUser';
 import ProductDetails from './Components/Home/ProductDetails/ProductDetails';
+import PrivateRoute from './Route/PrivateRoute';
+import Cart from './Components/Cart/Cart';
 
 
 const router = createBrowserRouter([
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/add-product",
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path:"/login",
@@ -37,8 +39,12 @@ const router = createBrowserRouter([
         element: <CreateUser></CreateUser>
       },
       {
+        path:"/cart",
+        element: <PrivateRoute><Cart></Cart></PrivateRoute>
+      },
+      {
         path:"/productDetails/:id",
-        element: <ProductDetails></ProductDetails>,
+        element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/products/${params?.id}`)
       }
     ]
