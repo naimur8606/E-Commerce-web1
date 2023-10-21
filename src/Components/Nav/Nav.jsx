@@ -12,16 +12,20 @@ const Nav = () => {
     const User = user
     const SignOut = () => {
         logOut()
-            .then(toast.error('Logout successfully!', {
-                position: "top-left",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            }))
+            .then(
+                // make sure user is confirmed to delete
+                fetch(`http://localhost:5000/user/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            console.log('deleted successfully');
+
+                        }
+                    })
+
+            )
             .catch()
     }
     const items = <>
@@ -53,20 +57,20 @@ const Nav = () => {
             </NavLink>
         </li>
         <li className="dropdown dropdown-end">
-                {User ? 
+            {User ?
                 <div className="text-black flex items-center">
                     <BsPerson className="text-2xl mr-1.5"></BsPerson><button onClick={SignOut}>Logout</button>
-                </div> : 
+                </div> :
                 <div className="text-black flex items-center"><BsPersonX className="text-2xl mr-1.5"></BsPersonX>
-                <NavLink
-                to="/login"
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-[#2c2cff] border border-[#2c2cff] px-3 py-1 rounded-md" : ""
-                }>
-                Login
-                </NavLink>
-            </div>
-                }
+                    <NavLink
+                        to="/login"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "text-[#2c2cff] border border-[#2c2cff] px-3 py-1 rounded-md" : ""
+                        }>
+                        Login
+                    </NavLink>
+                </div>
+            }
 
         </li>
     </>

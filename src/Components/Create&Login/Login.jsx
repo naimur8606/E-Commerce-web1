@@ -2,12 +2,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import SocialLogin from "./SocialLogin";
-import {  } from "react-icons/ai";
+import { } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { userLogin, setUserLocation } = useContext(AuthContext)
+    const [useAlert, setUseAlert] = useState(true)
     const location = useLocation()
     const State = location?.state
     setUserLocation(State)
@@ -18,16 +20,29 @@ const Login = () => {
         const password = e.target.password.value
         userLogin(email, password)
             .then(() => {
-                toast.success('Login successfully !', {
-                    position: "top-left",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
+                const user = { email, cartProduct: [] };
+                fetch(`http://localhost:5000/user`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(user)
                 })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.insertedId) {
+                            setUseAlert(true)
+                        }
+                    })
+                if (useAlert) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Login Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
                 navigate(location?.state ? State : "/")
             }
             )

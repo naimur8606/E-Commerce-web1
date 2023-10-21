@@ -17,6 +17,7 @@ import Cart from './Components/Cart/Cart';
 import ErrorPage from './Components/Error/ErrorPage';
 import CategoryHomePage from './Components/CategoryHomePage/CategoryHomePage';
 import UpdateProduct from './Components/CURD/UpdateProduct/UpdateProduct';
+import Product from './Components/Home/Products/Product/Product';
 
 
 const router = createBrowserRouter([

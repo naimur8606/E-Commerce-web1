@@ -8,6 +8,7 @@ const githubProvider = new GithubAuthProvider();
 export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({})
+    const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true);
     const [userCurrentPath, setUserCurrentPath] = useState(null)
 
@@ -45,6 +46,15 @@ const AuthProvider = ({ children }) => {
             unSubscribe();
         }
     }, [])
+
+    useEffect(() => {
+        fetch("/main.json") // Assuming "main.json" is in the public folder
+            .then((res) => res.json())
+            .then((data) => setJsonData(data[0]))
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
 
     
     const authInfo = {

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,9 +6,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from "./SocialLogin";
 import { signOut } from "firebase/auth";
 import auth from "../../Providers/Firebase/FirebaseConfig";
+import Swal from "sweetalert2";
 
 const CreateUser = () => {
     const { createUser} = useContext(AuthContext);
+    const [useAlert, setUseAlert] = useState(true)
     const navigate = useNavigate()
     const formSubmit = e => {
         e.preventDefault();
@@ -29,6 +31,29 @@ const CreateUser = () => {
         createUser(email, password)
             .then(()=>{
                 signOut(auth)
+                const user = { email, cartProduct: [] };
+                fetch(`http://localhost:5000/user`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.insertedId) {
+                            setUseAlert(true)
+                        }
+                    })
+                if (useAlert) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User Created Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Yaaah'
+                    })
+                }
                 navigate("/login")
             })
             .catch(error =>
