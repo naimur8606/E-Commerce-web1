@@ -9,15 +9,14 @@ import Home from './Components/Home/Home';
 import AuthProvider from './Providers/AuthProvider';
 import MainLayout from './Components/MainLayout';
 import AddProduct from './Components/CURD/AddProduct/AddProduct';
-import Login from './Components/Create&Login/Login';
 import CreateUser from './Components/Create&Login/CreateUser';
 import ProductDetails from './Components/Home/ProductDetails/ProductDetails';
 import PrivateRoute from './Route/PrivateRoute';
-import Cart from './Components/Cart/Cart';
 import ErrorPage from './Components/Error/ErrorPage';
 import CategoryHomePage from './Components/CategoryHomePage/CategoryHomePage';
 import UpdateProduct from './Components/CURD/UpdateProduct/UpdateProduct';
-import Product from './Components/Home/Products/Product/Product';
+import Login from './Components/Create&Login/Login';
+import CartEdit from './Components/Cart/CartEdite';
 
 
 const router = createBrowserRouter([
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/products")
+        loader: () => fetch("https://sob-dokander-server.vercel.app/products")
       },
       {
         path:"/add-product",
@@ -38,7 +37,7 @@ const router = createBrowserRouter([
       {
         path:"/update-product/:id",
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params?.id}`)
+        loader: ({params}) => fetch(`https://sob-dokander-server.vercel.app/products/${params?.id}`)
       },
       {
         path:"/login",
@@ -50,17 +49,17 @@ const router = createBrowserRouter([
       },
       {
         path:"/cart",
-        element: <PrivateRoute><Cart></Cart></PrivateRoute>
+        element: <PrivateRoute><CartEdit></CartEdit></PrivateRoute>
       },
       {
         path:"/:categories",
         element: <CategoryHomePage></CategoryHomePage>,
-        loader: () => fetch("http://localhost:5000/products")
+        loader: () => fetch("https://sob-dokander-server.vercel.app/products")
       },
       {
         path:"/productDetails/:id",
         element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params?.id}`)
+        loader: ({params}) => fetch(`https://sob-dokander-server.vercel.app/products/${params?.id}`)
       }
     ]
   },

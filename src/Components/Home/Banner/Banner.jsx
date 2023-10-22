@@ -1,5 +1,4 @@
 
-
 const Banner = () => {
     return (
         <div className="h-[40vh] md:h-[80vh] bg-[url('https://i.ibb.co/18M4yx4/sd-banner.png')] mx-auto bg-center bg-cover bg-blend-overlay bg-[#000] bg-opacity-5 flex justify-center items-center">

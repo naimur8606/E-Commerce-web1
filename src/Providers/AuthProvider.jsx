@@ -47,15 +47,6 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    useEffect(() => {
-        fetch("/main.json") // Assuming "main.json" is in the public folder
-            .then((res) => res.json())
-            .then((data) => setJsonData(data[0]))
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
-
     
     const authInfo = {
         createUser,
@@ -66,7 +57,9 @@ const AuthProvider = ({ children }) => {
         loading,
         userCurrentPath,
         setUserLocation,
-        githubLogin
+        githubLogin,
+        userData,
+        setUserData
     }
     return (
         <AuthContext.Provider value={authInfo}>

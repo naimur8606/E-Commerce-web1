@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
-const Product = ({ product }) => {
-    const {_id, brand_name, btn, category, description, name, photo, price, rating } = product;
+const Product = ({ product, updateCart }) => {
+    // console.log(product)
+    const {_id, brand_name, description, name, photo, price, rating } = product;
     return (
         <div className="border border-[#2c2cffc2] p-3 rounded-lg hover:shadow-lg truncate">
             <img className="h-52 md:h-72 2xl:h-[450px] w-full rounded-md" src={photo} alt="" />
@@ -14,7 +15,7 @@ const Product = ({ product }) => {
                 </div>
             </div>
             <div className="flex justify-between gap-2">
-                <button className="btn w-[48%] font-semibold bg-green-500 text-white hover:text-green-500">Add to cart</button>
+                <button onClick={()=>updateCart(product)} className="btn w-[48%] font-semibold bg-green-500 text-white hover:text-green-500">Add to cart</button>
                 <Link to={`/productDetails/${_id}`}  className="btn w-[48%] font-semibold bg-blue-500 text-white hover:text-blue-500">
                     Details
                 </Link>

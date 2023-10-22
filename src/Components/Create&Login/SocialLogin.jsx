@@ -16,7 +16,7 @@ const SocialLogin = () => {
             .then((req) => {
                 const email = req?.user?.email;
                 const user = { email, cartProduct: [] };
-                fetch(`http://localhost:5000/user`, {
+                fetch(`https://sob-dokander-server.vercel.app/user`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

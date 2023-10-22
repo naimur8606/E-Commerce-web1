@@ -14,9 +14,9 @@ const AddProduct = () => {
         const description = form.description.value;
 
         const product = { name, brand_name, category, price, rating, photo, description }
-        console.log(product);
+        // console.log(product);
         
-        fetch(`http://localhost:5000/products`, {
+        fetch(`https://sob-dokander-server.vercel.app/products`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

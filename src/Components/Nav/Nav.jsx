@@ -9,24 +9,19 @@ import 'react-toastify/dist/ReactToastify.css';
 const Nav = () => {
     const { user, logOut } = useContext(AuthContext)
     const [menu, setMenu] = useState(true)
-    const User = user
     const SignOut = () => {
         logOut()
-            .then(
-                // make sure user is confirmed to delete
-                fetch(`http://localhost:5000/user/${id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
-                            console.log('deleted successfully');
-
-                        }
-                    })
-
-            )
-            .catch()
+        .then(toast.error('Logout successfully!', {
+            position: "top-left",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        }))
+        .catch()
     }
     const items = <>
         <li>
@@ -49,7 +44,7 @@ const Nav = () => {
         </li>
         <li>
             <NavLink
-                to="/cart"
+                to='/cart'
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-[#2c2cff] border border-[#2c2cff] px-3 py-1 rounded-md" : ""
                 }>
@@ -57,7 +52,7 @@ const Nav = () => {
             </NavLink>
         </li>
         <li className="dropdown dropdown-end">
-            {User ?
+            {user ?
                 <div className="text-black flex items-center">
                     <BsPerson className="text-2xl mr-1.5"></BsPerson><button onClick={SignOut}>Logout</button>
                 </div> :
