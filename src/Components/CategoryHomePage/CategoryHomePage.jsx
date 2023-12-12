@@ -5,10 +5,11 @@ import MyCarousel from "../Carousel/MyCarousel";
 
 const CategoryHomePage = () => {
     const Products = useLoaderData();
-    // console.log(Products)
+    console.log(Products)
+    console.log(Products[10].category)
     const {categories} = useParams()
     console.log(categories)
-    const categoryProducts = Products?.filter(product => product.category.slice(0,3) === categories.slice(0,3))
+    const categoryProducts = Products?.filter(product => product.category?.slice(0,3) === categories?.slice(0,3))
     console.log(categoryProducts)
     return (
         <div className="w-11/12 mx-auto">

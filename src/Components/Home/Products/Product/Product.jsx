@@ -5,9 +5,9 @@ const Product = ({ product, updateCart }) => {
     const {_id, brand_name, description, name, photo, price, rating } = product;
     return (
         <div className="border border-[#2c2cffc2] p-3 rounded-lg hover:shadow-lg truncate">
-            <img className="h-52 md:h-72 2xl:h-[450px] w-full rounded-md" src={photo} alt="" />
+            <Link to={`/productDetails/${_id}`}><img className="h-52 md:h-72 2xl:h-[450px] w-full rounded-md" src={photo} alt="" /></Link>
             <div>
-                <h4 className="text-xl my-2">{name?.slice(0, 25)}...</h4>
+                <Link to={`/productDetails/${_id}`} className="text-xl my-2">{name?.slice(0, 25)}...</Link>
                 <h5>Brand: {brand_name}</h5>
                 <div className="flex justify-between items-center text-2xl">
                     <span className="text-orange-500 my-2 font-semibold">$ {price}</span>

@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       {
         path:"/productDetails/:id",
         element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`https://sob-dokander-server.vercel.app/products/${params?.id}`)
+        // loader: ({params}) => fetch(`https://sob-dokander-server.vercel.app/products/${params?.id}`)
       }
     ]
   },

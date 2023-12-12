@@ -14,7 +14,8 @@ const UpdateProduct = () => {
         const category = form.categories.value;
         const price = form.price.value;
         const rating = form.rating.value;
-        const photo = form.photo.value;
+        const stringPhoto = form.photo.value;
+        const photo = stringPhoto.split(',').map(url => url.replace(/^"(.*)"$/, '$1'));
         const description = form.description.value;
 
         const product = { name, brand_name, category, price, rating, photo, description }

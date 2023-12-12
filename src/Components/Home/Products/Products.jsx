@@ -1,5 +1,5 @@
 
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Product from "./Product/Product";
 import { useContext, useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Products = () => {
     const Products = useLoaderData()
+    const navigate = useNavigate()
     
     // console.log(Products)
     const {user} = useContext(AuthContext)
@@ -23,12 +24,7 @@ const Products = () => {
     },[email])
     const updateCart = async(item) => {
         if(!user){
-            Swal.fire({
-                title: 'Sorry!',
-                text: 'Please Login First',
-                icon: 'warning',
-                confirmButtonText: 'Ok'
-            })
+            navigate("/login")
         }else{
             const errorItem = selectProduct?.find(product => product?._id === item?._id)
             if(errorItem){

@@ -41,7 +41,7 @@ const CartEdit = () => {
     }
 
     return (
-        <div className="overflow-x-auto bg-white w-11/12 mx-auto my-5">
+        <div className="overflow-x-auto pt-20 bg-white w-11/12 mx-auto my-5">
             <h3 className="text-2xl mb-5">User: {email}</h3>
             <table className="table">
                 {/* head */}
